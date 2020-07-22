@@ -1,0 +1,20 @@
+<h4><i nz-icon nzType="info-circle" nzTheme="outline"></i>提示： 输入信息为摄像头的基本信息，在球机机身的标签处</h4>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label nzRequired nzFor="number">设备序列号: </nz-form-label>
+    <nz-form-control >
+      <input nz-input formControlName="number" id="number" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label nzFor="password" nzRequired>设备验证码：</nz-form-label>
+    <nz-form-control >
+      <input nz-input id="validate" formControlName="validate"/>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row >
+    <nz-form-control >
+      <button nz-button nzType="primary" type="submit">提交</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

@@ -1,4 +1,4 @@
-.logo { 
+.logo {
     width: 120px;
     float: left;
 }
@@ -19,7 +19,7 @@
 }
 
 .inner-layout {
-    /* padding: 0 24px 24px; */
+    padding: 0 24px 24px;
 }
 
 nz-breadcrumb {
@@ -27,7 +27,14 @@ nz-breadcrumb {
 }
 
 nz-content {
-    background: #fff;
+    margin-left: 200px;
+    width: 900px;
     padding: 24px;
     min-height: 280px;
+    box-shadow:2px 2px 2px 2px #aaaaaa;
+    border-radius: 10px;
+}
+
+.nav {
+  border-right: solid 2px #aaaaaa;
 }
