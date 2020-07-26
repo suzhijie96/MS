@@ -2,7 +2,7 @@
     <h1>welcome to login MS!!</h1>
     <div class="username-div">
         <label> 用户名：</label>
-        <input type="text" [(ngModel)]="loginInfo.username" placeholder="username"> 
+        <input type="text" [(ngModel)]="loginInfo.username" placeholder="username">
     </div>
     <div>
         <span> 密码：</span>
@@ -13,6 +13,7 @@
 </div>
 -->
 <div class="login-model">
+  <h1>监控系统</h1>
     <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
     <nz-form-item>
         <nz-form-control nzErrorTip="Please input your username!">
@@ -31,14 +32,14 @@
     <div nz-row class="login-form-margin">
         <div nz-col [nzSpan]="12">
         <label nz-checkbox formControlName="remember">
-            <span>Remember me</span>
+            <span style="color: #fff;">Remember me</span>
         </label>
         </div>
         <div nz-col [nzSpan]="12">
-        <a class="login-form-forgot">Forgot password</a>
+        <a class="login-form-forgot" routerLink='/resetPassword'>Forgot password</a>
         </div>
     </div>
-    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
+    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" routerLink='/Index'>Log in</button>
     Or <a> register now! </a>
     </form>
 </div>
