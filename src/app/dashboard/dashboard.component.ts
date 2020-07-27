@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe(params => {
+    this.activatedRoute.params.subscribe(params => {
       this.userName = params.username;
     });
 

@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'resetPwd', component: ResetPasswordComponent },
-  { path: 'Index', component: DashboardComponent,
+  { path: 'Index/:id', component: DashboardComponent,
     children: [
       { path: 'AddCamera', component: AddCameraComponent},
       { path: 'Live', component: LiveComponent},

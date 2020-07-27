@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     // 页面跳转,传递用户名参数
     console.log('userName: ' + this.validateForm.controls.userName.value);
     console.log('password: ' + this.validateForm.controls.password.value);
-    this.router.navigate(['Index'], {queryParams: { username: this.validateForm.controls.userName.value}});
+    this.router.navigate(['/Index', this.validateForm.controls.userName.value]);
     // tslint:disable-next-line: forin
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
