@@ -3,7 +3,7 @@ import { AddCameraComponent } from './add-camera/add-camera.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes} from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
 
 const routes: Routes = [
@@ -18,7 +18,7 @@ const routes: Routes = [
 
   { path: 'resetPassword', component: ResetPasswordComponent },
 
-]
+];
 
 @NgModule({
   declarations: [],

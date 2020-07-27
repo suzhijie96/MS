@@ -34,7 +34,7 @@ confirmValidator = (control: FormControl): { [s: string]: boolean } => {
     return { confirm: true, error: true };
   }
   return {};
-};
+}
 
 resetForm(e: MouseEvent): void {
   e.preventDefault();

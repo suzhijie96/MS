@@ -4,7 +4,7 @@ import { AddCameraComponent } from './add-camera/add-camera.component';
 import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';

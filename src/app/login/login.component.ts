@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router} from '@angular/router'
+import { Router} from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   validateForm!: FormGroup;
 
   submitForm(): void {
-    // 页面跳转 
+    // 页面跳转,传递用户名参数
     console.log('userName: ' + this.validateForm.controls.userName.value);
     console.log('password: ' + this.validateForm.controls.password.value);
     this.router.navigate(['Index'], {queryParams: { username: this.validateForm.controls.userName.value}});
@@ -37,12 +37,9 @@ export class LoginComponent implements OnInit {
 
   // 跳转到修改密码页面
   GoToResetPwd() {
-    let validate = this.validateForm.controls.userName;
-    console.log(validate);
-    this.router.navigate(['/resetPassword'], 
-    );
+    this.router.navigate(['/resetPassword']);
   }
-  constructor(public router:Router, private fb: FormBuilder) {}
+  constructor(public router: Router, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
