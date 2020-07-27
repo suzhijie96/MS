@@ -1,3 +1,4 @@
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { LiveComponent } from './live/live.component';
 import { AddCameraComponent } from './add-camera/add-camera.component';
 import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
@@ -16,7 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgZorroAntdModule } from 'ng-zorro-antd'
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
 };
@@ -28,7 +29,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     LoginComponent,
     DashboardComponent,
     AddCameraComponent,
-    LiveComponent
+    LiveComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

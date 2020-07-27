@@ -9,6 +9,7 @@ import {ResetPasswordComponent} from './reset-password/reset-password.component'
 const routes: Routes = [
   {path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'resetPwd', component: ResetPasswordComponent },
   { path: 'Index', component: DashboardComponent,
     children: [
       { path: 'AddCamera', component: AddCameraComponent},

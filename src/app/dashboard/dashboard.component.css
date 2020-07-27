@@ -19,6 +19,7 @@
 }
 
 .inner-layout {
+    background-color: #FFF;
     padding: 0 24px 24px;
 }
 
@@ -28,13 +29,12 @@ nz-breadcrumb {
 
 nz-content {
     margin-left: 200px;
-    width: 900px;
+    width: 800px;
     padding: 24px;
     min-height: 280px;
-    box-shadow:2px 2px 2px 2px #aaaaaa;
     border-radius: 10px;
 }
 
-.nav {
-  border-right: solid 2px #aaaaaa;
+.nz-divider-width {
+    margin: 0 1px;
 }
