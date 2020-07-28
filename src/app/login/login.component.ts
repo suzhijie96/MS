@@ -7,27 +7,16 @@ import { Router} from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  // loginInfo = {
-  //   username: '',
-  //   password: ''
-  // };
-  //   constructor() { }
-
-  // ngOnInit(): void {
-  // }
-
-  // submit(loginInfo: any): void {
-  //   alert(loginInfo.username + ',' + loginInfo.password);
-  // }
-
   validateForm!: FormGroup;
 
   submitForm(): void {
     // 页面跳转,传递用户名参数
     console.log('userName: ' + this.validateForm.controls.userName.value);
     console.log('password: ' + this.validateForm.controls.password.value);
-    this.router.navigate(['/Index', this.validateForm.controls.userName.value]);
+    if ( this.validateForm.valid ) {
+      window.localStorage.setItem('loginInfo', JSON.stringify(this.validateForm.value ));
+      this.router.navigate(['/Index', this.validateForm.controls.userName.value]);
+    }
     // tslint:disable-next-line: forin
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();

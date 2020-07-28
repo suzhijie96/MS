@@ -1,3 +1,5 @@
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RegisterComponent } from './register/register.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { LiveComponent } from './live/live.component';
 import { AddCameraComponent } from './add-camera/add-camera.component';
@@ -18,6 +20,7 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NzResultModule } from 'ng-zorro-antd/result';
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
 };
@@ -30,7 +33,9 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     DashboardComponent,
     AddCameraComponent,
     LiveComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    RegisterComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,8 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    NzResultModule
   ],
   providers: [ { provide: NZ_ICONS, useValue: icons } ],
   bootstrap: [AppComponent]

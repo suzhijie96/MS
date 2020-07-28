@@ -13,7 +13,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.userName = params.username;
+      console.log(params);
+      this.userName = params.id;
+      console.log(this.userName);
     });
 
   }
