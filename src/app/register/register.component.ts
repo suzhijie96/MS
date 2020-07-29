@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -9,9 +10,22 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
+  private headers = new HttpHeaders({'Content-Type': 'application/json'});  
   submitForm(): void {
+    // tslint:disable-next-line: variable-name
+    const _that = this;
     console.log(this.registerForm);
-
+    const url = "http://127.0.0.1:7001/login";
+    this.http.post(url,
+      JSON.stringify({
+        "username": _that.registerForm.controls.username.value,
+        "password": _that.registerForm.controls.password.value,
+        "phone_number": _that.registerForm.controls.phoneNumber.value }),
+        {headers: _that.headers}).subscribe(function (data) {
+          console.log(data)
+        },function (err) {
+          console.log(err);
+        });
     // tslint:disable-next-line: forin
     for (const i in this.registerForm.controls) {
       this.registerForm.controls[i].markAsDirty();
@@ -37,7 +51,7 @@ export class RegisterComponent implements OnInit {
     e.preventDefault();
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({

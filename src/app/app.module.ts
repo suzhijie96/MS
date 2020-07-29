@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NZ_ICONS } from 'ng-zorro-antd/icon';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -47,6 +47,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     DemoNgZorroAntdModule,
     ReactiveFormsModule,
     HttpClientModule,
+    HttpClientJsonpModule,
     BrowserAnimationsModule,
     NgZorroAntdModule,
     NzResultModule
