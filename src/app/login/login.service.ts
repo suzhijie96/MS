@@ -2,15 +2,23 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
+  constructor(private http: HttpClient) {}
 
-  constructor( private http: HttpClient) { }
-
+  login(data: { username: any; password: any; verify: any }) {
+    const url = '/api/login';
+    return this.http.post(url, {
+      username: data.username,
+      password: data.password,
+      verify: data.verify,
+      responseType: 'text'
+    });
+  }
   // tslint:disable-next-line:ban-types
   getVerifyCode() {
-    const url = 'http://127.0.0.1:7001/api/verify';
-    return this.http.get(url, { responseType: 'text'});
+    const url = '/api/verify';
+    return this.http.get(url, { responseType: 'text' }); // withCredentials: true
   }
 }

@@ -4,7 +4,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-
+import { NzMessageService } from 'ng-zorro-antd/message';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,13 +13,17 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   verifyCode: SafeHtml = '';
+  successRegister = false;
+  registerInfo = true;
+
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
   // 构造函数
   constructor(private fb: FormBuilder,
               private http: HttpClient,
               public registerService: RegisterService,
               private loginService: LoginService,
-              private doms: DomSanitizer) {}
+              private doms: DomSanitizer,
+              private message: NzMessageService) {}
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       username: [null, [Validators.required]],
@@ -39,8 +43,23 @@ export class RegisterComponent implements OnInit {
     }
     if (this.registerForm.valid) {
         console.log(this.registerForm.value);
-        this.registerService.register(this.registerForm.value).subscribe((res) => {
+        this.registerService.register(this.registerForm.value).subscribe((res: {status: number, message: string}) => {
           console.log(res);
+          switch ( res.status ){
+            case 1:
+              this.message.create('error', `${res.message}`);
+              break;
+            case 2:
+              this.message.create('error', `${res.message}`);
+              break;
+            case 3:
+              this.message.create('error', `${res.message}`);
+              break;
+            case 4:
+              this.successRegister = true;
+              this.registerInfo = false;
+              break;
+          }
           // switch (res.status)
         }, (err) => {
           console.log(err);

@@ -1,33 +1,32 @@
 import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-
 export class LoginComponent implements OnInit {
   validateForm!: FormGroup;
   verifyCode: SafeHtml = '';
-  private headers = new HttpHeaders({'Content-Type': 'application/json'});
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   constructor(
     public router: Router,
     private fb: FormBuilder,
     private http: HttpClient,
     private loginService: LoginService,
     private doms: DomSanitizer
-) {}
+  ) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       userName: [null, [Validators.required]],
       password: [null, [Validators.required]],
       verify: [null, [Validators.required]],
-      remember: [true]
+      remember: [true],
     });
     this.getVerifyCode();
   }
@@ -49,9 +48,23 @@ export class LoginComponent implements OnInit {
     //       console.log(err);
     //     // });
 
-    if ( this.validateForm.valid ) {
-      window.localStorage.setItem('loginInfo', JSON.stringify(this.validateForm.value ));
-      this.router.navigate(['/Index', this.validateForm.controls.userName.value]);
+    if (this.validateForm.valid) {
+      window.localStorage.setItem(
+        'loginInfo',
+        JSON.stringify(this.validateForm.value)
+      );
+      const raw = {
+        username: this.validateForm.controls.userName.value,
+        password: this.validateForm.controls.password.value,
+        verify: this.validateForm.controls.verify.value,
+      };
+      this.loginService.login(raw).subscribe((res) => {
+        console.log(res);
+        this.router.navigate([
+          '/Index',
+          this.validateForm.controls.userName.value,
+        ]);
+      });
     }
     // tslint:disable-next-line: forin
     for (const i in this.validateForm.controls) {
@@ -66,10 +79,8 @@ export class LoginComponent implements OnInit {
   }
 
   getVerifyCode() {
-    this.loginService.getVerifyCode().subscribe(res => {
+    this.loginService.getVerifyCode().subscribe((res) => {
       this.verifyCode = this.doms.bypassSecurityTrustHtml(res);
     });
   }
-
-
 }

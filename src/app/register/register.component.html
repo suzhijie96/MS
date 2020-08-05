@@ -1,6 +1,7 @@
 <div class="login-model">
   <h1>监控系统</h1>
   <form
+    *ngIf="registerInfo"
     nz-form
     [formGroup]="registerForm"
     (ngSubmit)="submitForm()"
@@ -88,4 +89,15 @@
       </nz-form-control>
     </nz-form-item>
   </form>
+  <nz-result
+  class="login-form"
+  *ngIf="successRegister"
+  nzStatus="success"
+  nzTitle="恭喜您已注册成功!!"
+  nzSubTitle="请使用注册好的用户名和密码在登录页面进行登录。"
+>
+  <div nz-result-extra>
+    <button nz-button nzType="primary" [routerLink]="['/login']">返回登陆</button>
+  </div>
+</nz-result>
 </div>
